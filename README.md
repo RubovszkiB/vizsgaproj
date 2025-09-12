@@ -1,2 +1,1 @@
-sziasztok 
-budos a kukerod
+Szia
