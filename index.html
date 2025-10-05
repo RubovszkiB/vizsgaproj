@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RMB Coaching - Fitness Edzői Portál</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome ikonok -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts - Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <span class="logo-text">RMB Coaching</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Főoldal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#training-plans">Edzéstervek</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#trainers">Edzőink</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#prices">Árak</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Rólunk</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link cart-icon" href="#"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-user"></i> Bejelentkezés</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">Éld át a sport varázsát!</h1>
+            <p class="hero-subtitle">Személyre szabott edzéstervek profi edzőinktől</p>
+            <a href="#training-plans" class="btn btn-primary btn-lg hero-cta">Fedezd fel edzéstervjeinket</a>
+        </div>
+    </section>
+
+    <!-- Carousel Section -->
+    <section class="carousel-section" id="training-plans">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Népszerű edzésterveink</h2>
+            
+            <div id="trainingCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <!-- Slide 1 - Labdarúgás -->
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-md-4 mb-4">
+                                <div class="card training-card">
+                                    <img src="https://images.unsplash.com/photo-1575361204480-aadea25e6e68?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Labdarúgás edzés">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Focista állóképesség</h5>
+                                        <p class="card-text">12 hetes program a focisták számára, amely kiemelten foglalkozik a futási állóképesség fejlesztésével.</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="badge bg-primary">Labdarúgás</span>
+                                            <span class="fw-bold text-primary">12.990 Ft</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button class="btn btn-primary w-100 add-to-cart">Kosárba</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="card training-card">
+                                    <img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Labdarúgás technika">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Labdaérintés és technika</h5>
+                                        <p class="card-text">8 hetes program, amely a labdakezelés, lövés és átadás technikájának tökéletesítésére fókuszál.</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="badge bg-primary">Labdarúgás</span>
+                                            <span class="fw-bold text-primary">9.990 Ft</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button class="btn btn-primary w-100 add-to-cart">Kosárba</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="card training-card">
+                                    <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Labdarúgás erőnlét">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Erőnlét fejlesztés</h5>
+                                        <p class="card-text">10 hetes erőnléti program focistáknak, amely izomerősítő és robbanékonyságot fejlesztő gyakorlatokat tartalmaz.</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="badge bg-primary">Labdarúgás</span>
+                                            <span class="fw-bold text-primary">11.490 Ft</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button class="btn btn-primary w-100 add-to-cart">Kosárba</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 2 - Kondicionálás -->
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-4 mb-4">
+                                <div class="card training-card">
+                                    <img src="https://images.unsplash.com/photo-1534367507877-0edd93bd013b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Kondicionáló edzés">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Teljes test erősítés</h5>
+                                        <p class="card-text">8 hetes program, amely minden fő izomcsoportot megdolgoztat, erőnlétet és állóképességet fejleszt.</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="badge bg-success">Kondicionálás</span>
+                                            <span class="fw-bold text-primary">8.990 Ft</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button class="btn btn-primary w-100 add-to-cart">Kosárba</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="card training-card">
+                                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="HIIT edzés">
+                                    <div class="card-body">
+                                        <h5 class="card-title">HIIT zsírégetés</h5>
+                                        <p class="card-text">6 hetes intenzív intervallus edzésprogram, amely hatékonyan segít a zsírégetésben és az állóképesség növelésében.</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="badge bg-success">Kondicionálás</span>
+                                            <span class="fw-bold text-primary">7.990 Ft</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button class="btn btn-primary w-100 add-to-cart">Kosárba</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="card training-card">
+                                    <img src="https://images.unsplash.com/photo-1549060279-7e168fce7090?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Erőemelés">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Erőemelő alapok</h5>
+                                        <p class="card-text">10 hetes program az erőemelés alapjainak elsajátításához, megfelelő technikával és biztonsággal.</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="badge bg-success">Kondicionálás</span>
+                                            <span class="fw-bold text-primary">10.990 Ft</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button class="btn btn-primary w-100 add-to-cart">Kosárba</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 3 - Általános sport -->
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-4 mb-4">
+                                <div class="card training-card">
+                                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Yoga">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Yoga alapok</h5>
+                                        <p class="card-text">8 hetes kezdő yoga program, amely a testi és lelki egyensúly helyreállítására fókuszál.</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="badge bg-warning">Általános sport</span>
+                                            <span class="fw-bold text-primary">6.990 Ft</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button class="btn btn-primary w-100 add-to-cart">Kosárba</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="card training-card">
+                                    <img src="https://images.unsplash.com/photo-1574680178050-55c6a6a96e0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Futás">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Futóprogram kezdőknek</h5>
+                                        <p class="card-text">12 hetes program, amely segít eljutni a nulla kilométerről az első 5 km megtételéhez.</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="badge bg-warning">Általános sport</span>
+                                            <span class="fw-bold text-primary">5.990 Ft</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button class="btn btn-primary w-100 add-to-cart">Kosárba</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="card training-card">
+                                    <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Otthoni edzés">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Otthoni testépítés</h5>
+                                        <p class="card-text">10 hetes program, amelyhez nincs szükség felszerelésre, otthoni körülmények között végezhető.</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="badge bg-warning">Általános sport</span>
+                                            <span class="fw-bold text-primary">7.490 Ft</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button class="btn btn-primary w-100 add-to-cart">Kosárba</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Carousel Controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#trainingCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Előző</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#trainingCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Következő</span>
+                </button>
+            </div>
+            
+            <!-- Új terv ötlet gomb -->
+            <div class="text-center mt-5">
+                <button id="newPlanBtn" class="btn btn-outline-primary btn-lg">
+                    <i class="fas fa-lightbulb me-2"></i>Új edzésterv ötlet
+                </button>
+                <div id="newPlanIdea" class="mt-3 alert alert-info d-none" role="alert">
+                    <!-- Ide jön az új terv ötlet -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trainers Section -->
+    <section class="trainers-section py-5 bg-light" id="trainers">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Edzőink</h2>
+            
+            <div class="row">
+                <!-- Csabika - Foci edző -->
+                <div class="col-md-4 mb-4">
+                    <div class="card trainer-card text-center">
+                        <div class="trainer-img-container">
+                            <img src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?ixlib=rb-4.0.3&auto=format&fit=crop&w=634&q=80" class="card-img-top trainer-img" alt="Bakaja Csaba">
+                            <div class="trainer-overlay">
+                                <div class="trainer-social">
+                                    <a href="#"><i class="fab fa-facebook"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Bakaja Csaba</h5>
+                            <p class="card-text trainer-specialty">Labdarúgás szakértő</p>
+                            <p class="card-text">10+ év profi labdarúgó tapasztalat. UEFA B licenccel rendelkezik. Fiatal tehetségek felkészítésében szakosodott.</p>
+                            <div class="trainer-stats">
+                                <div class="stat-item">
+                                    <span class="stat-number">250+</span>
+                                    <span class="stat-label">Képzett sportoló</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">8</span>
+                                    <span class="stat-label">Év tapasztalat</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Balázs - Kondi edző -->
+                <div class="col-md-4 mb-4">
+                    <div class="card trainer-card text-center">
+                        <div class="trainer-img-container">
+                            <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="card-img-top trainer-img" alt="Rubovszki Balázs">
+                            <div class="trainer-overlay">
+                                <div class="trainer-social">
+                                    <a href="#"><i class="fab fa-facebook"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Rubovszki Balázs</h5>
+                            <p class="card-text trainer-specialty">Kondicionáló edző</p>
+                            <p class="card-text">Testépítési versenyek győztese, személyi edzői oklevéllel rendelkezik. Testösszetétel optimalizálásában szakosodott.</p>
+                            <div class="trainer-stats">
+                                <div class="stat-item">
+                                    <span class="stat-number">500+</span>
+                                    <span class="stat-label">Elégedett ügyfél</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">12</span>
+                                    <span class="stat-label">Év tapasztalat</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Botond - Általános edző -->
+                <div class="col-md-4 mb-4">
+                    <div class="card trainer-card text-center">
+                        <div class="trainer-img-container">
+                            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1220&q=80" class="card-img-top trainer-img" alt="Amesei Botond">
+                            <div class="trainer-overlay">
+                                <div class="trainer-social">
+                                    <a href="#"><i class="fab fa-facebook"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Amesei Botond</h5>
+                            <p class="card-text trainer-specialty">Általános fitness edző</p>
+                            <p class="card-text">Több sportágban is versenyszerűen aktív. Crossfit, funkcionális tréning és csoportos órák szakértője.</p>
+                            <div class="trainer-stats">
+                                <div class="stat-item">
+                                    <span class="stat-number">300+</span>
+                                    <span class="stat-label">Aktív tanítvány</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">6</span>
+                                    <span class="stat-label">Év tapasztalat</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4 mb-4">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h4>Személyre szabott</h4>
+                    <p>Minden edzésterv egyedi igényekre szabható, céljaidnak megfelelően.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4>Folyamatos fejlődés</h4>
+                    <p>Kövesd fejlődésedet és kapj ajánlásokat a következő lépésekre.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-icon">+
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Közösség</h4>
+                    <p>Csatlakozz más sportolókhoz, ossz meg tapasztalatokat és motiváljátok egymást.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <h5>Kapcsolat</h5>
+                    <p><i class="fas fa-envelope me-2"></i> info@rmbcoaching.hu</p>
+                    <p><i class="fas fa-phone me-2"></i> +36 1 234 5678</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> 1061 Budapest, Andrássy út 1.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <h5>Kövess minket</h5>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                    <p class="mt-3">&copy; 2023 RMB Coaching. Minden jog fenntartva.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Saját JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
