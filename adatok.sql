@@ -1,0 +1,17 @@
+-- Edzők adatainak beszúrása
+INSERT INTO trainers (name, specialty, description, experience_years, trained_athletes, image_url) VALUES
+('Bakaja Csaba', 'Labdarúgás szakértő', '10+ év profi labdarúgó tapasztalat. UEFA B licenccel rendelkezik. Fiatal tehetségek felkészítésében szakosodott.', 8, 250, 'https://images.unsplash.com/photo-1560272564-c83b66b1ad12?ixlib=rb-4.0.3&auto=format&fit=crop&w=634&q=80'),
+('Rubovszki Balázs', 'Kondicionáló edző', 'Testépítési versenyek győztese, személyi edzői oklevéllel rendelkezik. Testösszetétel optimalizálásában szakosodott.', 12, 500, 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80'),
+('Amesei Botond', 'Általános fitness edző', 'Több sportágban is versenyszerűen aktív. Crossfit, funkcionális tréning és csoportos órák szakértője.', 6, 300, 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1220&q=80');
+
+-- Edzéstervek adatainak beszúrása
+INSERT INTO training_plans (title, description, category, duration_weeks, price, image_url, trainer_id) VALUES
+('Focista állóképesség', '12 hetes program a focisták számára, amely kiemelten foglalkozik a futási állóképesség fejlesztésével.', 'Labdarúgás', 12, 12990, 'https://images.unsplash.com/photo-1575361204480-aadea25e6e68?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80', 1),
+('Labdaérintés és technika', '8 hetes program, amely a labdakezelés, lövés és átadás technikájának tökéletesítésére fókuszál.', 'Labdarúgás', 8, 9990, 'https://images.unsplash.com/photo-1529900748604-07564a03e7a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80', 1),
+('Erőnlét fejlesztés', '10 hetes erőnléti program focistáknak, amely izomerősítő és robbanékonyságot fejlesztő gyakorlatokat tartalmaz.', 'Labdarúgás', 10, 11490, 'https://images.unsplash.com/photo-1599058917212-d750089bc07e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80', 1),
+('Teljes test erősítés', '8 hetes program, amely minden fő izomcsoportot megdolgoztat, erőnlétet és állóképességet fejleszt.', 'Kondicionálás', 8, 8990, 'https://images.unsplash.com/photo-1534367507877-0edd93bd013b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80', 2),
+('HIIT zsírégetés', '6 hetes intenzív intervallus edzésprogram, amely hatékonyan segít a zsírégetésben és az állóképesség növelésében.', 'Kondicionálás', 6, 7990, 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80', 2),
+('Erőemelő alapok', '10 hetes program az erőemelés alapjainak elsajátításához, megfelelő technikával és biztonsággal.', 'Kondicionálás', 10, 10990, 'https://images.unsplash.com/photo-1549060279-7e168fce7090?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80', 2),
+('Yoga alapok', '8 hetes kezdő yoga program, amely a testi és lelki egyensúly helyreállítására fókuszál.', 'Általános sport', 8, 6990, 'https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80', 3),
+('Futóprogram kezdőknek', '12 hetes program, amely segít eljutni a nulla kilométerről az első 5 km megtételéhez.', 'Általános sport', 12, 5990, 'https://images.unsplash.com/photo-1574680178050-55c6a6a96e0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80', 3),
+('Otthoni testépítés', '10 hetes program, amelyhez nincs szükség felszerelésre, otthoni körülmények között végezhető.', 'Általános sport', 10, 7490, 'https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80', 3);
