@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rólunk - RMB Coaching</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .mission-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #6ab1f7 100%);
+            color: white;
+            padding: 80px 0;
+        }
+        
+        .values-section {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+        
+        .value-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            height: 100%;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .value-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--primary-color);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            position: relative;
+            width: 45%;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            left: 55%;
+        }
+        
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            right: -10px;
+            transform: translateX(50%);
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::after {
+            left: -10px;
+            transform: translateX(-50%);
+        }
+        
+        .stats-section {
+            padding: 80px 0;
+            background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 60px);
+                left: 40px !important;
+            }
+            
+            .timeline-content::after {
+                left: -30px !important;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <span class="logo-text">RMB Coaching</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Főoldal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#training-plans">Edzéstervek</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#trainers">Edzőink</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#prices">Árak</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html">Rólunk</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="level-assessment.html">Ingyenes szintfelmérő</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                   <li class="nav-item">
+    <a class="nav-link cart-icon" href="cart.html">
+        <i class="fas fa-shopping-cart"></i> 
+        <span class="cart-count">0</span>
+    </a>
+</li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-user"></i> Bejelentkezés</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" style="padding: 100px 0; background: linear-gradient(rgba(74, 144, 226, 0.9), rgba(44, 62, 80, 0.9)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');">
+        <div class="container">
+            <h1 class="hero-title">Rólunk</h1>
+            <p class="hero-subtitle">Ismerd meg a történetünket, küldetésünket és a mögöttünk álló szakértelmet</p>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2 class="mb-4">Küldetésünk</h2>
+                    <p class="lead mb-4">Az RMB Coaching alapítói hiszünk abban, hogy a sport és a testmozgás nem csupán fizikai aktivitás, hanem életmód, amely pozitívan alakítja az emberek életét.</p>
+                    <p>Célunk, hogy mindenki megtalálja a számára megfelelő sportági és edzésformát, függetlenül korától, edzettségi szintjétől vagy korábbi tapasztalataitól. Hiszünk abban, hogy a személyre szabott megközelítés és a szakmai hátterű edzésprogramok segítségével bárki elérheti céljait.</p>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="RMB Coaching csapat" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Értékeink</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <h4>Személyre szabottság</h4>
+                        <p>Minden egyes edzéstervet és tanácsot a felhasználó egyedi igényei, céljai és képességei alapján alakítunk ki.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h4>Szakmai hozzáértés</h4>
+                        <p>Edzőink kiváló szakmai háttérrel és gyakorlati tapasztalattal rendelkeznek különböző sportágakban.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h4>Szenvedély</h4>
+                        <p>A sport iránt érzett szenvedélyünk vezérel minket, és ezt szeretnénk átadni minden egyes ügyfelünknek.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Folyamatos fejlődés</h4>
+                        <p>Mindig naprakészek maradunk a legújabb edzésmódszerekkel és tudományos kutatásokkal kapcsolatban.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>Közösségépítés</h4>
+                        <p>Olyan közösséget építünk, ahol az emberek motiválják és támogatják egymást az edzés során.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Biztonság</h4>
+                        <p>Mindig a biztonságos és megfelelő technikákra helyezzük a hangsúlyt, hogy megelőzzük a sérüléseket.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Történetünk</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>2020 - Alapítás</h4>
+                        <p>Három szenvedélyes sportoló, Bakaja Csaba, Rubovszki Balázs és Amesei Botond úgy döntött, hogy összehozza szakértelmét, és létrehozza az RMB Coaching-ot. Céljuk az volt, hogy minőségi, személyre szabott edzésprogramokat kínáljanak mindenki számára.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>2021 - Első sikerek</h4>
+                        <p>Az első évben már több mint 100 elégedett ügyfelünk volt, akik sikeresen érték el edzési céljaikat. Ekkor bővítettük szolgáltatásainkat online edzésprogramokkal is.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>2022 - Növekedés és bővülés</h4>
+                        <p>Megjelentünk a közösségi médiában, és jelentősen bővült ügyfélkörünk. Ebben az évben vezettük be a szintfelmérő rendszerünket, amely még pontosabb személyre szabást tett lehetővé.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>2023 - Új szint</h4>
+                        <p>Átléptük az 500 aktív felhasználó határt, és továbbfejlesztettük weboldalunkat, hogy még felhasználóbarátabb és funkcionálisabb legyen. Ebben az évben indítottuk el a közösségi események sorozatát is.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="trainers-section py-5 bg-light" id="trainers">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Alapítóink</h2>
+            
+            <div class="row">
+                <!-- Csabika - Foci edző -->
+                <div class="col-md-4 mb-4">
+                    <div class="card trainer-card text-center">
+                        <div class="trainer-img-container">
+                            <img src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?ixlib=rb-4.0.3&auto=format&fit=crop&w=634&q=80" class="card-img-top trainer-img" alt="Bakaja Csaba">
+                            <div class="trainer-overlay">
+                                <div class="trainer-social">
+                                    <a href="#"><i class="fab fa-facebook"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Bakaja Csaba</h5>
+                            <p class="card-text trainer-specialty">Labdarúgás szakértő</p>
+                            <p class="card-text">10+ év profi labdarúgó tapasztalat. UEFA B licenccel rendelkezik. Fiatal tehetségek felkészítésében szakosodott.</p>
+                            <div class="trainer-stats">
+                                <div class="stat-item">
+                                    <span class="stat-number">250+</span>
+                                    <span class="stat-label">Képzett sportoló</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">8</span>
+                                    <span class="stat-label">Év tapasztalat</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Balázs - Kondi edző -->
+                <div class="col-md-4 mb-4">
+                    <div class="card trainer-card text-center">
+                        <div class="trainer-img-container">
+                            <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="card-img-top trainer-img" alt="Rubovszki Balázs">
+                            <div class="trainer-overlay">
+                                <div class="trainer-social">
+                                    <a href="#"><i class="fab fa-facebook"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Rubovszki Balázs</h5>
+                            <p class="card-text trainer-specialty">Kondicionáló edző</p>
+                            <p class="card-text">Testépítési versenyek győztese, személyi edzői oklevéllel rendelkezik. Testösszetétel optimalizálásában szakosodott.</p>
+                            <div class="trainer-stats">
+                                <div class="stat-item">
+                                    <span class="stat-number">500+</span>
+                                    <span class="stat-label">Elégedett ügyfél</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">12</span>
+                                    <span class="stat-label">Év tapasztalat</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Botond - Általános edző -->
+                <div class="col-md-4 mb-4">
+                    <div class="card trainer-card text-center">
+                        <div class="trainer-img-container">
+                            <img src="https://img.hvg.hu/Img/8133bb77-3fc3-490f-b374-cb198a0455cc/54defe14-8d21-4f01-a6ed-ef782b12039c.jpg" class="card-img-top trainer-img" alt="Amesei Botond">
+                            <div class="trainer-overlay">
+                                <div class="trainer-social">
+                                    <a href="#"><i class="fab fa-facebook"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Mezei Botond</h5>
+                            <p class="card-text trainer-specialty">Mixed szakértő</p>
+                            <p class="card-text">Több sportágban is versenyszerűen aktív. Football felkészítés nagy tornákra, edzőtermi edzésekkel egyaránt.</p>
+                            <div class="trainer-stats">
+                                <div class="stat-item">
+                                    <span class="stat-number">300+</span>
+                                    <span class="stat-label">Aktív tanítvány</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">11</span>
+                                    <span class="stat-label">Év tapasztalat</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <h2 class="section-title text-center mb-5 text-white">Eredményeink számokban</h2>
+            <div class="row text-center">
+                <div class="col-md-3 mb-4">
+                    <div class="stat-number">500+</div>
+                    <p>Elégedett ügyfél</p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stat-number">50+</div>
+                    <p>Egyedi edzésterv</p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stat-number">3</div>
+                    <p>Szakértő edző</p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stat-number">98%</div>
+                    <p>Elégedettségi arány</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container text-center">
+            <h2 class="mb-4">Készen állsz a változásra?</h2>
+            <p class="lead mb-4">Csatlakozz több száz elégedett ügyfelünkhöz, és kezdd el sportos életútjadat még ma!</p>
+            <div class="d-flex justify-content-center flex-wrap gap-3">
+                <a href="level-assessment.html" class="btn btn-light btn-lg">Ingyenes szintfelmérő</a>
+                <a href="index.html#training-plans" class="btn btn-outline-light btn-lg">Fedezd fel edzésterveinket</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <h5>Kapcsolat</h5>
+                    <p><i class="fas fa-envelope me-2"></i> info@rmbcoaching.hu</p>
+                    <p><i class="fas fa-phone me-2"></i> +36 1 234 5678</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> 1061 Budapest, Andrássy út 1.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <h5>Kövess minket</h5>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                    <p class="mt-3">&copy; 2023 RMB Coaching. Minden jog fenntartva.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Saját JavaScript -->
+<script src="script.js"></script>
+<script src="cart.js"></script>
+</body>
+</html>
