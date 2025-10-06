@@ -2,7 +2,7 @@
 INSERT INTO trainers (name, specialty, description, experience_years, trained_athletes, image_url) VALUES
 ('Bakaja Csaba', 'Labdarúgás szakértő', '10+ év profi labdarúgó tapasztalat. UEFA B licenccel rendelkezik. Fiatal tehetségek felkészítésében szakosodott.', 8, 250, 'https://images.unsplash.com/photo-1560272564-c83b66b1ad12?ixlib=rb-4.0.3&auto=format&fit=crop&w=634&q=80'),
 ('Rubovszki Balázs', 'Kondicionáló edző', 'Testépítési versenyek győztese, személyi edzői oklevéllel rendelkezik. Testösszetétel optimalizálásában szakosodott.', 12, 500, 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80'),
-('Amesei Botond', 'Általános fitness edző', 'Több sportágban is versenyszerűen aktív. Crossfit, funkcionális tréning és csoportos órák szakértője.', 6, 300, 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1220&q=80');
+('Mezei Botond', 'Több sportág szakértő', 'Több sportágban is versenyszerűen aktív.Football felkészítés nagy tornákra, edzőtermi edzésekkel egyaránt.', 11, 300, 'https://img.hvg.hu/Img/8133bb77-3fc3-490f-b374-cb198a0455cc/54defe14-8d21-4f01-a6ed-ef782b12039c.jpg');
 
 -- Edzéstervek adatainak beszúrása
 INSERT INTO training_plans (title, description, category, duration_weeks, price, image_url, trainer_id) VALUES
