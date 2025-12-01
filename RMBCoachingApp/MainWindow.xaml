@@ -1,0 +1,449 @@
+<Window x:Class="RMBCoachingApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="RMB Coaching - Admin App" Height="800" Width="1200"
+        WindowStartupLocation="CenterScreen">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" Background="#2c3e50" Padding="15">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="RMB Coaching Admin" 
+                          Foreground="White" 
+                          FontSize="20" 
+                          FontWeight="Bold"/>
+                <TextBlock Text="Edzők, sportolók és edzéstervek kezelése" 
+                          Foreground="#ecf0f1" 
+                          FontSize="14" 
+                          Margin="20,0,0,0"
+                          VerticalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Main Content -->
+        <TabControl Grid.Row="1" Margin="10">
+            <!-- Dashboard -->
+            <TabItem Header="Dashboard">
+                <ScrollViewer>
+                    <WrapPanel Margin="20">
+                        <TextBlock Text="Áttekintés" FontSize="22" FontWeight="Bold" Margin="0,0,0,20" Width="100%"/>
+                        
+                        <!-- Gyorsstatisztikák -->
+                        <WrapPanel>
+                            <Border Width="220" Height="110" Margin="10" Background="#3498db" CornerRadius="8">
+                                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <TextBlock Text="Aktív sportolók" Foreground="White" FontSize="14" FontWeight="SemiBold"/>
+                                    <TextBlock x:Name="tbActiveAthletesCount" Text="0" Foreground="White" 
+                                               FontSize="32" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                    <TextBlock x:Name="tbNewAthletesToday" Text="+0 ma" Foreground="#ecf0f1" 
+                                               FontSize="12" HorizontalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                            
+                            <Border Width="220" Height="110" Margin="10" Background="#2ecc71" CornerRadius="8">
+                                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <TextBlock Text="Havi bevétel" Foreground="White" FontSize="14" FontWeight="SemiBold"/>
+                                    <TextBlock x:Name="tbMonthlyRevenue" Text="0 Ft" Foreground="White" 
+                                               FontSize="28" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                    <TextBlock x:Name="tbRevenueChange" Text="↗ 0%" Foreground="#ecf0f1" 
+                                               FontSize="12" HorizontalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                            
+                            <Border Width="220" Height="110" Margin="10" Background="#e74c3c" CornerRadius="8">
+                                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <TextBlock Text="Ma" Foreground="White" FontSize="14" FontWeight="SemiBold"/>
+                                    <TextBlock x:Name="tbTodaysEvents" Text="0 esemény" Foreground="White" 
+                                               FontSize="28" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                    <TextBlock x:Name="tbNextEventTime" Text="" Foreground="#ecf0f1" 
+                                               FontSize="12" HorizontalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                            
+                            <Border Width="220" Height="110" Margin="10" Background="#9b59b6" CornerRadius="8">
+                                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <TextBlock Text="Aktív edzéstervek" Foreground="White" FontSize="14" FontWeight="SemiBold"/>
+                                    <TextBlock x:Name="tbActivePlans" Text="0" Foreground="White" 
+                                               FontSize="32" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                    <TextBlock x:Name="tbMostPopularPlan" Text="" Foreground="#ecf0f1" 
+                                               FontSize="11" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                        </WrapPanel>
+
+                        <!-- További statisztikák -->
+                        <WrapPanel Margin="0,20,0,0">
+                            <!-- Legutóbbi vásárlások -->
+                            <Border BorderBrush="#bdc3c7" BorderThickness="1" CornerRadius="8" 
+                                    Margin="10" Padding="15" Background="White" Width="450">
+                                <StackPanel>
+                                    <TextBlock Text="Legutóbbi vásárlások" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+                                    <DataGrid x:Name="dgRecentPurchases" Height="200" AutoGenerateColumns="False"
+                                              IsReadOnly="True" HeadersVisibility="Column">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Sportoló" Binding="{Binding AthleteName}" Width="120"/>
+                                            <DataGridTextColumn Header="Terv" Binding="{Binding TrainingPlanTitle}" Width="150"/>
+                                            <DataGridTextColumn Header="Dátum" Binding="{Binding PurchaseDate, StringFormat=yy.MM.dd}" Width="80"/>
+                                            <DataGridTextColumn Header="Ár" Binding="{Binding Price, StringFormat=N0} Ft" Width="80"/>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </StackPanel>
+                            </Border>
+
+                            <!-- Közelgő események -->
+                            <Border BorderBrush="#bdc3c7" BorderThickness="1" CornerRadius="8" 
+                                    Margin="10" Padding="15" Background="White" Width="450">
+                                <StackPanel>
+                                    <TextBlock Text="Közelgő események (7 nap)" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+                                    <DataGrid x:Name="dgUpcomingEvents" Height="200" AutoGenerateColumns="False"
+                                              IsReadOnly="True" HeadersVisibility="Column">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Dátum" Binding="{Binding EventDate, StringFormat=MM.dd}" Width="70"/>
+                                            <DataGridTextColumn Header="Idő" Binding="{Binding DisplayTime}" Width="80"/>
+                                            <DataGridTextColumn Header="Esemény" Binding="{Binding Title}" Width="200"/>
+                                            <DataGridTextColumn Header="Hely" Binding="{Binding Location}" Width="100"/>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </StackPanel>
+                            </Border>
+                        </WrapPanel>
+                    </WrapPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <!-- Edzők lap -->
+            <TabItem Header="Edzők">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Toolbar -->
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
+                        <Button x:Name="btnRefreshTrainers" Content="Frissítés" Click="BtnRefreshTrainers_Click" Margin="0,0,10,0"/>
+                        <Button x:Name="btnAddTrainer" Content="Új edző" Click="BtnAddTrainer_Click" Margin="0,0,10,0"/>
+                        <Button x:Name="btnEditTrainer" Content="Szerkesztés" Click="BtnEditTrainer_Click" Margin="0,0,10,0"/>
+                        <Button x:Name="btnDeleteTrainer" Content="Törlés" Click="BtnDeleteTrainer_Click" Margin="0,0,10,0"/>
+                        <Button x:Name="btnExportTrainers" Content="Export CSV" Click="BtnExportTrainers_Click" Margin="20,0,0,0"/>
+                        <TextBox x:Name="txtSearchTrainer" Width="200" Margin="20,0,0,0" 
+                                 TextChanged="TxtSearchTrainer_TextChanged" 
+                                 Tag="Keresés név vagy szakértelem alapján..."/>
+                        <CheckBox x:Name="cbActiveTrainersOnly" Content="Csak aktívak" 
+                                  IsChecked="True" Margin="10,0,0,0" VerticalAlignment="Center"
+                                  Checked="CbActiveTrainersOnly_Checked" Unchecked="CbActiveTrainersOnly_Checked"/>
+                    </StackPanel>
+
+                    <!-- Data Grid -->
+                    <DataGrid x:Name="dgTrainers" Grid.Row="1" 
+                             AutoGenerateColumns="False" 
+                             IsReadOnly="True"
+                             SelectionMode="Single">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="40"/>
+                            <DataGridTextColumn Header="Név" Binding="{Binding Name}" Width="150"/>
+                            <DataGridTextColumn Header="Szakértelem" Binding="{Binding Specialty}" Width="130"/>
+                            <DataGridTextColumn Header="Tapasztalat" Binding="{Binding ExperienceYears, StringFormat={}{0} év}" Width="80"/>
+                            <DataGridTextColumn Header="Sportolók" Binding="{Binding TrainedAthletes}" Width="70"/>
+                            <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="180"/>
+                            <DataGridTextColumn Header="Telefon" Binding="{Binding Phone}" Width="100"/>
+                            <DataGridTextColumn Header="Értékelés" Binding="{Binding Rating, StringFormat={}{0:F1}}" Width="70"/>
+                            <DataGridCheckBoxColumn Header="Aktív" Binding="{Binding IsActive}" Width="50"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <!-- Edzéstervek lap -->
+            <TabItem Header="Edzéstervek">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Toolbar -->
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
+                        <Button x:Name="btnRefreshPlans" Content="Frissítés" Click="BtnRefreshPlans_Click" Margin="0,0,10,0"/>
+                        <Button x:Name="btnAddPlan" Content="Új edzésterv" Click="BtnAddPlan_Click" Margin="0,0,10,0"/>
+                        <Button x:Name="btnEditPlan" Content="Szerkesztés" Click="BtnEditPlan_Click" Margin="0,0,10,0"/>
+                        <Button x:Name="btnDeletePlan" Content="Törlés" Click="BtnDeletePlan_Click" Margin="0,0,10,0"/>
+                        <Button x:Name="btnExportPlans" Content="Export" Click="BtnExportPlans_Click" Margin="20,0,0,0"/>
+                        <ComboBox x:Name="cbPlanCategoryFilter" Width="150" Margin="10,0,0,0"
+                                  SelectedIndex="0" SelectionChanged="CbPlanCategoryFilter_SelectionChanged">
+                            <ComboBoxItem>Összes kategória</ComboBoxItem>
+                            <ComboBoxItem>Labdarúgás</ComboBoxItem>
+                            <ComboBoxItem>Kondicionálás</ComboBoxItem>
+                            <ComboBoxItem>Általános sportedzés</ComboBoxItem>
+                            <ComboBoxItem>Erőnlét</ComboBoxItem>
+                        </ComboBox>
+                        <CheckBox x:Name="cbPublishedPlansOnly" Content="Csak publikált" 
+                                  IsChecked="True" Margin="10,0,0,0" VerticalAlignment="Center"
+                                  Checked="CbPublishedPlansOnly_Checked" Unchecked="CbPublishedPlansOnly_Checked"/>
+                    </StackPanel>
+
+                    <!-- Data Grid -->
+                    <DataGrid x:Name="dgTrainingPlans" Grid.Row="1" 
+                             AutoGenerateColumns="False" 
+                             IsReadOnly="True"
+                             SelectionMode="Single">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="40"/>
+                            <DataGridTextColumn Header="Cím" Binding="{Binding Title}" Width="200"/>
+                            <DataGridTextColumn Header="Kategória" Binding="{Binding Category}" Width="120"/>
+                            <DataGridTextColumn Header="Időtartam" Binding="{Binding DurationWeeks, StringFormat={}{0} hét}" Width="80"/>
+                            <DataGridTextColumn Header="Ár" Binding="{Binding Price, StringFormat={}{0:N0} Ft}" Width="90"/>
+                            <DataGridTextColumn Header="Edző" Binding="{Binding TrainerName}" Width="150"/>
+                            <DataGridTextColumn Header="Nehézség" Binding="{Binding DifficultyLevel}" Width="80"/>
+                            <DataGridTextColumn Header="Vásárlások" Binding="{Binding PurchaseCount}" Width="80"/>
+                            <DataGridCheckBoxColumn Header="Publikált" Binding="{Binding IsPublished}" Width="60"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <!-- Sportolók lap -->
+            <TabItem Header="Sportolók">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Toolbar -->
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
+                        <Button x:Name="btnRefreshAthletes" Content="Frissítés" Click="BtnRefreshAthletes_Click" Margin="0,0,10,0"/>
+                        <Button x:Name="btnAddAthlete" Content="Új sportoló" Click="BtnAddAthlete_Click" Margin="0,0,10,0"/>
+                        <Button x:Name="btnEditAthlete" Content="Szerkesztés" Click="BtnEditAthlete_Click" Margin="0,0,10,0"/>
+                        <Button x:Name="btnDeleteAthlete" Content="Törlés" Click="BtnDeleteAthlete_Click" Margin="0,0,10,0"/>
+                        <Button x:Name="btnExportAthletes" Content="Export CSV" Click="BtnExportAthletes_Click" Margin="20,0,0,0"/>
+                        <TextBox x:Name="txtSearchAthlete" Width="200" Margin="10,0,0,0" 
+                                 TextChanged="TxtSearchAthlete_TextChanged" 
+                                 Tag="Keresés név vagy email alapján..."/>
+                        <ComboBox x:Name="cbAthleteSportFilter" Width="150" Margin="10,0,0,0"
+                                  SelectedIndex="0" SelectionChanged="CbAthleteSportFilter_SelectionChanged">
+                            <ComboBoxItem>Összes sport</ComboBoxItem>
+                            <ComboBoxItem>Labdarúgás</ComboBoxItem>
+                            <ComboBoxItem>Kondicionálás</ComboBoxItem>
+                            <ComboBoxItem>Általános sportedzés</ComboBoxItem>
+                            <ComboBoxItem>Erőnlét</ComboBoxItem>
+                            <ComboBoxItem>Kosárlabda</ComboBoxItem>
+                            <ComboBoxItem>Úszás</ComboBoxItem>
+                        </ComboBox>
+                        <CheckBox x:Name="cbActiveAthletesOnly" Content="Csak aktívak" 
+                                  IsChecked="True" Margin="10,0,0,0" VerticalAlignment="Center"
+                                  Checked="CbActiveAthletesOnly_Checked" Unchecked="CbActiveAthletesOnly_Checked"/>
+                    </StackPanel>
+
+                    <!-- Data Grid -->
+                    <DataGrid x:Name="dgAthletes" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="40"/>
+                            <DataGridTextColumn Header="Név" Binding="{Binding Name}" Width="150"/>
+                            <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="200"/>
+                            <DataGridTextColumn Header="Telefon" Binding="{Binding Phone}" Width="100"/>
+                            <DataGridTextColumn Header="Kor" Binding="{Binding Age}" Width="50"/>
+                            <DataGridTextColumn Header="Sport" Binding="{Binding SportType}" Width="120"/>
+                            <DataGridTextColumn Header="Tagság" Binding="{Binding MembershipType}" Width="80"/>
+                            <DataGridTextColumn Header="Regisztráció" 
+                                               Binding="{Binding RegistrationDate, StringFormat=yyyy.MM.dd}" 
+                                               Width="100"/>
+                            <DataGridCheckBoxColumn Header="Aktív" Binding="{Binding IsActive}" Width="50"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <!-- Vásárlások lap -->
+            <TabItem Header="Vásárlások">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Toolbar -->
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
+                        <DatePicker x:Name="dpFromDate" Width="120" Margin="0,0,10,0" SelectedDate="{x:Static sys:DateTime.Now}"/>
+                        <DatePicker x:Name="dpToDate" Width="120" Margin="0,0,10,0" SelectedDate="{x:Static sys:DateTime.Now}"/>
+                        <Button x:Name="btnFilterPurchases" Content="Szűrés" Click="BtnFilterPurchases_Click" Margin="0,0,10,0"/>
+                        <Button x:Name="btnRefreshPurchases" Content="Frissítés" Click="BtnRefreshPurchases_Click"/>
+                        <Button x:Name="btnExportSales" Content="Export bevétel" Click="BtnExportSales_Click" Margin="20,0,0,0"/>
+                        <TextBlock x:Name="tbTotalRevenue" Margin="20,0,0,0" VerticalAlignment="Center" 
+                                   FontWeight="Bold" FontSize="14" Foreground="#2c3e50"/>
+                    </StackPanel>
+
+                    <!-- Data Grid -->
+                    <DataGrid x:Name="dgPurchases" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="40"/>
+                            <DataGridTextColumn Header="Sportoló" Binding="{Binding AthleteName}" Width="150"/>
+                            <DataGridTextColumn Header="Edzésterv" Binding="{Binding TrainingPlanTitle}" Width="180"/>
+                            <DataGridTextColumn Header="Dátum" 
+                                               Binding="{Binding PurchaseDate, StringFormat=yy.MM.dd HH:mm}" 
+                                               Width="110"/>
+                            <DataGridTextColumn Header="Ár" Binding="{Binding Price, StringFormat={}{0:N0} Ft}" Width="90"/>
+                            <DataGridTextColumn Header="Fizetés" Binding="{Binding PaymentMethod}" Width="100"/>
+                            <DataGridTextColumn Header="Számlaszám" Binding="{Binding InvoiceNumber}" Width="120"/>
+                            <DataGridCheckBoxColumn Header="Fizetve" Binding="{Binding IsPaid}" Width="60"/>
+                            <DataGridTextColumn Header="Státusz" Binding="{Binding Status}" Width="90"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <!-- Naptár/Események lap -->
+            <TabItem Header="Naptár">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Toolbar -->
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
+                        <Button x:Name="btnPrevMonth" Content="◀" Click="BtnPrevMonth_Click" Width="30"/>
+                        <TextBlock x:Name="tbCurrentMonth" Margin="10,0" VerticalAlignment="Center" 
+                                   FontSize="16" FontWeight="Bold" MinWidth="200" TextAlignment="Center"/>
+                        <Button x:Name="btnNextMonth" Content="▶" Click="BtnNextMonth_Click" Width="30" Margin="10,0,0,0"/>
+                        <Button x:Name="btnToday" Content="Ma" Click="BtnToday_Click" Margin="20,0,0,0"/>
+                        <Button x:Name="btnAddEvent" Content="Esemény hozzáadása" Click="BtnAddEvent_Click" Margin="20,0,0,0"/>
+                        <ComboBox x:Name="cbEventTypeFilter" Margin="10,0,0,0" Width="140" SelectedIndex="0">
+                            <ComboBoxItem>Összes típus</ComboBoxItem>
+                            <ComboBoxItem>Edzések</ComboBoxItem>
+                            <ComboBoxItem>Találkozók</ComboBoxItem>
+                            <ComboBoxItem>Játékok</ComboBoxItem>
+                            <ComboBoxItem>Versenysorozat</ComboBoxItem>
+                        </ComboBox>
+                        <CheckBox x:Name="cbUpcomingEventsOnly" Content="Csak közelgő" 
+                                  IsChecked="True" Margin="10,0,0,0" VerticalAlignment="Center"
+                                  Checked="CbUpcomingEventsOnly_Checked" Unchecked="CbUpcomingEventsOnly_Checked"/>
+                    </StackPanel>
+
+                    <!-- Data Grid -->
+                    <DataGrid x:Name="dgCalendar" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Dátum" 
+                                               Binding="{Binding EventDate, StringFormat=yyyy.MM.dd}" 
+                                               Width="100"/>
+                            <DataGridTextColumn Header="Idő" 
+                                               Binding="{Binding DisplayTime}" 
+                                               Width="100"/>
+                            <DataGridTextColumn Header="Esemény" Binding="{Binding Title}" Width="200"/>
+                            <DataGridTextColumn Header="Típus" Binding="{Binding EventType}" Width="100"/>
+                            <DataGridTextColumn Header="Helyszín" Binding="{Binding Location}" Width="150"/>
+                            <DataGridTextColumn Header="Edző" Binding="{Binding TrainerName}" Width="150"/>
+                            <DataGridTextColumn Header="Résztvevők" Binding="{Binding Participants}" Width="200"/>
+                            <DataGridCheckBoxColumn Header="Kész" Binding="{Binding IsCompleted}" Width="50"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <!-- Statisztikák lap -->
+            <TabItem Header="Statisztikák">
+                <ScrollViewer>
+                    <StackPanel Margin="20">
+                        <TextBlock Text="Részletes statisztikák" FontSize="22" FontWeight="Bold" Margin="0,0,0,20"/>
+
+                        <WrapPanel>
+                            <!-- Edző statisztikák -->
+                            <Border BorderBrush="#bdc3c7" BorderThickness="1" CornerRadius="8" Margin="10" Padding="15" Background="White" Width="300">
+                                <StackPanel>
+                                    <TextBlock Text="📊 Edzők" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+                                    <TextBlock x:Name="tbTotalTrainers" FontSize="14" Margin="0,2"/>
+                                    <TextBlock x:Name="tbAvgExperience" FontSize="14" Margin="0,2"/>
+                                    <TextBlock x:Name="tbTopTrainer" FontSize="14" Margin="0,2"/>
+                                    <TextBlock x:Name="tbActiveTrainers" FontSize="14" Margin="0,2"/>
+                                </StackPanel>
+                            </Border>
+
+                            <!-- Sportolók statisztikák -->
+                            <Border BorderBrush="#bdc3c7" BorderThickness="1" CornerRadius="8" Margin="10" Padding="15" Background="White" Width="300">
+                                <StackPanel>
+                                    <TextBlock Text="👥 Sportolók" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+                                    <TextBlock x:Name="tbTotalAthletes" FontSize="14" Margin="0,2"/>
+                                    <TextBlock x:Name="tbActiveAthletes" FontSize="14" Margin="0,2"/>
+                                    <TextBlock x:Name="tbAvgAthleteAge" FontSize="14" Margin="0,2"/>
+                                    <TextBlock x:Name="tbNewAthletesThisMonth" FontSize="14" Margin="0,2"/>
+                                </StackPanel>
+                            </Border>
+
+                            <!-- Edzéstervek statisztikák -->
+                            <Border BorderBrush="#bdc3c7" BorderThickness="1" CornerRadius="8" Margin="10" Padding="15" Background="White" Width="300">
+                                <StackPanel>
+                                    <TextBlock Text="📋 Edzéstervek" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+                                    <TextBlock x:Name="tbTotalPlans" FontSize="14" Margin="0,2"/>
+                                    <TextBlock x:Name="tbAvgPrice" FontSize="14" Margin="0,2"/>
+                                    <TextBlock x:Name="tbAvgDuration" FontSize="14" Margin="0,2"/>
+                                    <TextBlock x:Name="tbMostPopularCategory" FontSize="14" Margin="0,2"/>
+                                </StackPanel>
+                            </Border>
+
+                            <!-- Pénzügyi statisztikák -->
+                            <Border BorderBrush="#bdc3c7" BorderThickness="1" CornerRadius="8" Margin="10" Padding="15" Background="White" Width="300">
+                                <StackPanel>
+                                    <TextBlock Text="💰 Pénzügy" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+                                    <TextBlock x:Name="tbTotalRevenue" FontSize="14" Margin="0,2"/>
+                                    <TextBlock x:Name="tbMonthlyRevenue" FontSize="14" Margin="0,2"/>
+                                    <TextBlock x:Name="tbAvgPurchaseValue" FontSize="14" Margin="0,2"/>
+                                    <TextBlock x:Name="tbMostSoldPlan" FontSize="14" Margin="0,2"/>
+                                </StackPanel>
+                            </Border>
+
+                            <!-- Kategóriák szerinti bontás -->
+                            <Border BorderBrush="#bdc3c7" BorderThickness="1" CornerRadius="8" Margin="10" Padding="15" Background="White" Width="400">
+                                <StackPanel>
+                                    <TextBlock Text="📈 Kategóriák eloszlása" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+                                    <ItemsControl x:Name="icCategories"/>
+                                </StackPanel>
+                            </Border>
+
+                            <!-- Sporttípusok szerinti bontás -->
+                            <Border BorderBrush="#bdc3c7" BorderThickness="1" CornerRadius="8" Margin="10" Padding="15" Background="White" Width="400">
+                                <StackPanel>
+                                    <TextBlock Text="🏃 Sporttípusok" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+                                    <ItemsControl x:Name="icSportTypes"/>
+                                </StackPanel>
+                            </Border>
+                        </WrapPanel>
+
+                        <!-- Top edzők táblázat -->
+                        <Border BorderBrush="#bdc3c7" BorderThickness="1" CornerRadius="8" Margin="10,20,10,10" Padding="15" Background="White">
+                            <StackPanel>
+                                <TextBlock Text="🏆 Top 5 edző" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+                                <DataGrid x:Name="dgTopTrainers" Height="180" AutoGenerateColumns="False" IsReadOnly="True">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Név" Binding="{Binding Name}" Width="150"/>
+                                        <DataGridTextColumn Header="Sportolók" Binding="{Binding AthleteCount}" Width="80"/>
+                                        <DataGridTextColumn Header="Edzéstervek" Binding="{Binding PlanCount}" Width="80"/>
+                                        <DataGridTextColumn Header="Értékelés" Binding="{Binding Rating, StringFormat={}{0:F1}}" Width="80"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+
+        <!-- Status Bar -->
+        <StatusBar Grid.Row="2" Background="#ecf0f1">
+            <StatusBarItem>
+                <TextBlock x:Name="tbStatus" Text="Kész"/>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Center">
+                <TextBlock x:Name="tbLastUpdate" Text="Utolsó frissítés: -"/>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <TextBlock x:Name="tbConnectionStatus" Text="Kapcsolat: Ismeretlen"/>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>

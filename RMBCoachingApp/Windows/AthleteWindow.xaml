@@ -1,0 +1,118 @@
+<Window x:Class="RMBCoachingApp.Windows.AthleteWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Sportoló kezelése" Height="600" Width="550"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize">
+    
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Cím -->
+        <TextBlock Grid.Row="0" Text="{Binding WindowTitle}" 
+                  FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+        
+        <!-- Űrlap -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                    <!-- Név -->
+                    <TextBlock Text="Név*" Margin="0,5"/>
+                    <TextBox x:Name="txtName" Text="{Binding Athlete.Name}" 
+                            Margin="0,2,0,10"/>
+                    
+                    <!-- Email -->
+                    <TextBlock Text="Email*" Margin="0,5"/>
+                    <TextBox x:Name="txtEmail" Text="{Binding Athlete.Email}" 
+                            Margin="0,2,0,10"/>
+                    
+                    <!-- Telefon -->
+                    <TextBlock Text="Telefon" Margin="0,5"/>
+                    <TextBox x:Name="txtPhone" Text="{Binding Athlete.Phone}" 
+                            Margin="0,2,0,10"/>
+                    
+                    <!-- Kor -->
+                    <TextBlock Text="Kor*" Margin="0,5"/>
+                    <TextBox x:Name="txtAge" Text="{Binding Athlete.Age}" 
+                            Margin="0,2,0,10"/>
+                    
+                    <!-- Sporttípus -->
+                    <TextBlock Text="Sporttípus" Margin="0,5"/>
+                    <ComboBox x:Name="cbSportType" SelectedItem="{Binding Athlete.SportType}" 
+                             Margin="0,2,0,10">
+                        <ComboBoxItem>Labdarúgás</ComboBoxItem>
+                        <ComboBoxItem>Kondicionálás</ComboBoxItem>
+                        <ComboBoxItem>Általános sportedzés</ComboBoxItem>
+                        <ComboBoxItem>Kosárlabda</ComboBoxItem>
+                        <ComboBoxItem>Úszás</ComboBoxItem>
+                        <ComboBoxItem>Futás</ComboBoxItem>
+                        <ComboBoxItem>Egyéb</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                
+                <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                    <!-- Tagság típus -->
+                    <TextBlock Text="Tagság típus" Margin="0,5"/>
+                    <ComboBox x:Name="cbMembership" SelectedItem="{Binding Athlete.MembershipType}" 
+                             Margin="0,2,0,10">
+                        <ComboBoxItem>Alap</ComboBoxItem>
+                        <ComboBoxItem>Prémium</ComboBoxItem>
+                        <ComboBoxItem>VIP</ComboBoxItem>
+                    </ComboBox>
+                    
+                    <!-- Aktív -->
+                    <CheckBox x:Name="cbIsActive" IsChecked="{Binding Athlete.IsActive}" 
+                             Content="Aktív sportoló" Margin="0,10,0,10"/>
+                    
+                    <!-- Regisztráció dátuma -->
+                    <TextBlock Text="Regisztráció" Margin="0,5"/>
+                    <TextBox x:Name="txtRegDate" 
+                            Text="{Binding Athlete.RegistrationDate, StringFormat=yyyy.MM.dd HH:mm}"
+                            IsReadOnly="True" Margin="0,2,0,10" Background="#f0f0f0"/>
+                    
+                    <!-- Utolsó belépés -->
+                    <TextBlock Text="Utolsó belépés" Margin="0,5"/>
+                    <TextBox x:Name="txtLastLogin" 
+                            Text="{Binding Athlete.LastLoginDate, StringFormat=yyyy.MM.dd HH:mm}"
+                            IsReadOnly="True" Margin="0,2,0,10" Background="#f0f0f0"/>
+                </StackPanel>
+            </Grid>
+            
+            <!-- Cím -->
+            <TextBlock Text="Cím" Margin="0,20,0,5" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="txtAddress" Grid.ColumnSpan="2"
+                    Text="{Binding Athlete.Address}" 
+                    Margin="0,2,0,10"/>
+            
+            <!-- Vészhelyzet elérhetőség -->
+            <TextBlock Text="Vészhelyzet elérhetőség" Margin="0,5" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="txtEmergency" Grid.ColumnSpan="2"
+                    Text="{Binding Athlete.EmergencyContact}" 
+                    Margin="0,2,0,10"/>
+            
+            <!-- Orvosi megjegyzések -->
+            <TextBlock Text="Orvosi megjegyzések" Margin="0,5" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="txtMedical" Grid.ColumnSpan="2"
+                    Text="{Binding Athlete.MedicalNotes}" 
+                    AcceptsReturn="True" TextWrapping="Wrap" Height="60"
+                    VerticalScrollBarVisibility="Auto" Margin="0,2,0,10"/>
+        </ScrollViewer>
+        
+        <!-- Gombok -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="btnCancel" Content="Mégse" Width="80" Margin="0,0,10,0" 
+                    Click="BtnCancel_Click"/>
+            <Button x:Name="btnSave" Content="Mentés" Width="80" 
+                    Click="BtnSave_Click" IsDefault="True"/>
+        </StackPanel>
+    </Grid>
+</Window>

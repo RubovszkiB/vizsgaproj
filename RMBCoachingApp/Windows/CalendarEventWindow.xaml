@@ -1,0 +1,104 @@
+<Window x:Class="RMBCoachingApp.Windows.CalendarEventWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Esemény hozzáadása" Height="500" Width="450"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize">
+    
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Cím -->
+        <TextBlock Grid.Row="0" Text="Új esemény" 
+                  FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+        
+        <!-- Űrlap -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <!-- Esemény neve -->
+                <TextBlock Text="Esemény neve*" Margin="0,5"/>
+                <TextBox x:Name="txtTitle" Text="{Binding CalendarEvent.Title}" 
+                        Margin="0,2,0,10"/>
+                
+                <!-- Esemény típus -->
+                <TextBlock Text="Esemény típus" Margin="0,5"/>
+                <ComboBox x:Name="cbEventType" SelectedItem="{Binding CalendarEvent.EventType}" 
+                         Margin="0,2,0,10">
+                    <ComboBoxItem>Edzés</ComboBoxItem>
+                    <ComboBoxItem>Találkozó</ComboBoxItem>
+                    <ComboBoxItem>Játék</ComboBoxItem>
+                    <ComboBoxItem>Versenysorozat</ComboBoxItem>
+                    <ComboBoxItem>Edzőtábor</ComboBoxItem>
+                    <ComboBoxItem>Egyéb</ComboBoxItem>
+                </ComboBox>
+                
+                <!-- Dátum -->
+                <TextBlock Text="Dátum*" Margin="0,5"/>
+                <DatePicker x:Name="dpEventDate" SelectedDate="{Binding CalendarEvent.EventDate}" 
+                           Margin="0,2,0,10"/>
+                
+                <!-- Idő -->
+                <Grid Margin="0,5,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <TextBlock Text="Kezdés" VerticalAlignment="Center"/>
+                    <TextBox x:Name="txtStartTime" Grid.Column="1" Width="80" Margin="10,0"
+                            Text="{Binding CalendarEvent.StartTime, StringFormat=hh\\:mm}"/>
+                    <TextBlock Grid.Column="2" Text="Befejezés" VerticalAlignment="Center"/>
+                    <TextBox x:Name="txtEndTime" Grid.Column="3" Width="80" Margin="10,0"
+                            Text="{Binding CalendarEvent.EndTime, StringFormat=hh\\:mm}"/>
+                </Grid>
+                
+                <!-- Helyszín -->
+                <TextBlock Text="Helyszín" Margin="0,5"/>
+                <TextBox x:Name="txtLocation" Text="{Binding CalendarEvent.Location}" 
+                        Margin="0,2,0,10"/>
+                
+                <!-- Edző -->
+                <TextBlock Text="Edző" Margin="0,5"/>
+                <ComboBox x:Name="cbTrainer" DisplayMemberPath="Name" 
+                         SelectedValuePath="Id"
+                         SelectedValue="{Binding CalendarEvent.TrainerId}"
+                         ItemsSource="{Binding Trainers}" 
+                         Margin="0,2,0,10"/>
+                
+                <!-- Résztvevők -->
+                <TextBlock Text="Résztvevők" Margin="0,5"/>
+                <TextBox x:Name="txtParticipants" Text="{Binding CalendarEvent.Participants}" 
+                        Margin="0,2,0,10"/>
+                
+                <!-- Leírás -->
+                <TextBlock Text="Leírás" Margin="0,5"/>
+                <TextBox x:Name="txtDescription" Text="{Binding CalendarEvent.Description}" 
+                        AcceptsReturn="True" TextWrapping="Wrap" Height="80"
+                        VerticalScrollBarVisibility="Auto" Margin="0,2,0,10"/>
+                
+                <!-- Megjegyzések -->
+                <TextBlock Text="Megjegyzések" Margin="0,5"/>
+                <TextBox x:Name="txtNotes" Text="{Binding CalendarEvent.Notes}" 
+                        AcceptsReturn="True" TextWrapping="Wrap" Height="60"
+                        VerticalScrollBarVisibility="Auto" Margin="0,2,0,10"/>
+                
+                <!-- Elkészült -->
+                <CheckBox x:Name="cbIsCompleted" IsChecked="{Binding CalendarEvent.IsCompleted}" 
+                         Content="Esemény elkészült" Margin="0,10,0,0"/>
+            </StackPanel>
+        </ScrollViewer>
+        
+        <!-- Gombok -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="btnCancel" Content="Mégse" Width="80" Margin="0,0,10,0" 
+                    Click="BtnCancel_Click"/>
+            <Button x:Name="btnSave" Content="Mentés" Width="80" 
+                    Click="BtnSave_Click" IsDefault="True"/>
+        </StackPanel>
+    </Grid>
+</Window>
