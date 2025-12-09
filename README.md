@@ -1,3 +1,4 @@
+https://trello.com/b/cfFotMTd/fiteessapp
 Szia
 
 Az általunk tervezett IKT projekt célja egy modern, felhasználóbarát és interaktív **fitness edzői weboldal** létrehozása, amely széles körben kiszolgálja a sport iránt érdeklődők és edzeni vágyók igényeit. A projektet háromfős csapatban valósítjuk meg: Bakaja Csaba, Rubovszki Balázs és Amesei Botond közösen dolgoznak a fejlesztésen. A weboldal nemcsak a felhasználók számára kínál edzésprogramokat és sporttal kapcsolatos szolgáltatásokat, hanem egy átlátható **adminisztrátori felületet** is tartalmaz, amely a tartalmak és felhasználók kezelését teszi lehetővé.
